@@ -20,6 +20,9 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx'],
+    },
     plugins: [
         new HtmlPlugin({
             template: './public/index.html'
