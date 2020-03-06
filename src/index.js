@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
+import IndexNavigation from './app/navigation/IndexNavigation'
 
-export default class Index extends Component {
-    componentDidMount(){
-       console.log("i mounted")
-    }
+export default class index extends Component {
     render() {
-        return (
-            <div>
-                <title>tobacco Free</title>
-                <h1>Hello World</h1>
-            </div>
-        )
+        return <IndexNavigation/>;
     }
 }
