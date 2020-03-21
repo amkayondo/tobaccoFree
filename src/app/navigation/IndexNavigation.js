@@ -14,8 +14,12 @@ export default function IndexNavigation() {
     return (
         <BrowserRouter>
             <Switch>
-            <Route exact path="/xd" component={IndexPage}/>
-            <Route path="/map" component={MapPage}/>
+            <Route  path="/xd">
+            <IndexPage/>
+            </Route>
+            <Route path="/map">
+            <MapPage/>    
+            </Route>/>
             </Switch>
         </BrowserRouter>
     )
