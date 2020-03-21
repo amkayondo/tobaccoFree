@@ -1,20 +1,33 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
-  codecov: codecov/codecov@1.0.2
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build:
+    docker:
+      - image: circleci/node:12.16.1
+    
+    working_directory: ~/repo
+
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run coverage
-      - codecov/upload:
-          file: {{ coverage_report_filepath }}
-workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+      - run: npm install
+      - run: npm test
+
+
+# version: 2.1
+# orbs:
+#   node: circleci/node@1.1.6
+#   codecov: codecov/codecov@1.0.2
+# jobs:
+#   build-and-test:
+#     executor:
+#       name: node/default
+#     steps:
+#       - checkout
+#       - node/with-cache:
+#           steps:
+#             - run: npm install
+#             - run: npm run coverage
+#       - codecov/upload:
+#           file: {{ coverage_report_filepath }}
+# workflows:
+#     build-and-test:
+#       jobs:
+#         - build-and-test
