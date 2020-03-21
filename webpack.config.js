@@ -2,6 +2,9 @@ const path = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
+    node: {
+        fs: 'empty'
+    },
     entry: "./App.js",
     output: {
         path: path.join(
@@ -12,16 +15,20 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_module/,
+                test: /\.js$|jsx/,
+                exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
                 }
-            }
-        ]
+            },
+            { test: /\.js$|jsx/, use: 'mocha-loader' },
+        ],
+        options: {
+            presets: ["es2015"]
+        },
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
+        extensions: ['*', '.js', '.jsx'],
     },
     plugins: [
         new HtmlPlugin({
