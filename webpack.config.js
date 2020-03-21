@@ -2,9 +2,6 @@ const path = require("path");
 const HtmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    node: {
-        fs: 'empty'
-    },
     entry: "./App.js",
     output: {
         path: path.join(
@@ -21,11 +18,7 @@ module.exports = {
                     loader: 'babel-loader',
                 }
             },
-            { test: /\.js$|jsx/, use: 'mocha-loader' },
         ],
-        options: {
-            presets: ["es2015"]
-        },
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
@@ -34,5 +27,8 @@ module.exports = {
         new HtmlPlugin({
             template: './public/index.html'
         })
-    ]
+    ],
+    devServer: {
+        historyApiFallback: true,
+      }
 }
