@@ -1,6 +1,9 @@
 const webPackExternals = require('webpack-node-externals')
 
 module.exports = {
+    node: {
+        fs: 'empty'
+    },
     mode:'development',
     target: 'node',
     externals: [webPackExternals()],
