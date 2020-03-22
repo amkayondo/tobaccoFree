@@ -11,11 +11,29 @@ module.exports = {
         rules: [
             {
                 test: /\.js$|jsx/,
-                use: 'babel-loader',
                 exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                }
             },
-            { test: /\.css$/, use: 'css-loader' },
-        ]
+            {
+                test: /\.css$/i,
+                use: ['css-loader'],
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'images/[hash]-[name].[ext]',
+                      }
+                }]
+            }
+        ],
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
