@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import IndexNavigation from './app/navigation/IndexNavigation'
+import NavSwitcher from './app/navigation/NavSwitcher';
 
 export default class index extends Component {
     render() {
-        return <IndexNavigation/>;
+        return <NavSwitcher />;
     }
 }
