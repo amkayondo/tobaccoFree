@@ -11,4 +11,4 @@ describe("AUTH TESTS", () => {
     it('It should render auth page', () => {
         expect(wrapper.find(".auth_lad").exists()).to.equal(true)
     });
-})
+});
