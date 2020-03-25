@@ -8,11 +8,11 @@ const authToken = null;
 export default function NavSwitcher() {
     const [state] = useState({ display: 'block' })
     const switchComponents = () => {
-        setTimeout(() => {
-            <SplashScreen/>
-        }, 50)
+        // setTimeout(() => {
+        //     <SplashScreen/>
+        // }, 50)
         if(authToken === null){
-            return <SplashScreen/>   
+            return <LoggedOutNav/>
         }
         return <LoggedInNav/>
     }

@@ -5,10 +5,22 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import SignInPage from '../SignInPage'
 
-describe("AUTH TESTS", () => {
+describe("SIGNUP AUTH PAGE", () => {
     const wrapper = shallow(<SignInPage/>);
-    
-    it('It should render auth page', () => {
-        expect(wrapper.find(".auth_lad").exists()).to.equal(true)
+    it('It should render signup page', () => {
+        expect(wrapper.find(".brht.kdfk").exists()).to.equal(true)
+    });
+    it('It should link to another page', () => {
+        expect(wrapper.find("#acd").exists()).to.equal(true)
+    });
+    it('It should link to index auth page', () => {
+        expect(wrapper.find(".bckda").exists()).to.equal(true)
+    });
+    it('It should load form for input', () => {
+        expect(wrapper.find("form.sgnfn_dib").exists()).to.equal(true)
+    });
+    it('It should load form input',
+     () => {
+        expect(wrapper.find("input#sgnfn_inpt").exists()).to.equal(true)
     });
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Image } from 'gestalt'
 import loadingSpinner from '../../assets/img/shared/loadingSpinner.svg'
 import '../../assets/css/lazyLoader.css'
+import AuthContext from '../../../context/AuthContext'
 
 export default class SplashScreen extends Component {
     constructor(){
