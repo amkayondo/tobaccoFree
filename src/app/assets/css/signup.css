@@ -4,12 +4,11 @@
 }
 body {
     margin: 0;
-    background-color: #585858;
     font-family: ned;
 }
 .brht {
     width: 100%;
-    background-color: #dad9d9;
+    background-color: #fff;
     height: 100%;
     position: absolute;
     margin-top: 12px;
@@ -39,7 +38,7 @@ body {
     padding-left: 13px;
     padding-right: 13px;
     margin-top: 16px;
-    background: #dad9d9;
+    background: #fff;
     position: fixed;
     width: -webkit-fill-available;
     bottom: 1px;
