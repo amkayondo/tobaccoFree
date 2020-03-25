@@ -1,6 +1,6 @@
 @font-face {
     font-family: ned;
-    src: url(../fonts/CenturyGothic.ttf);
+    src: url(../fonts/CenturyGothic.ttf)
 }
 body {
     margin: 0;
@@ -17,18 +17,6 @@ body {
     border-top-right-radius: 12px;
 }
 
-.imgdhf {
-    background: #929292;
-    width: 112px;
-    height: 112px;
-    border-radius: 50%;
-    padding: 10px;
-    margin: auto;
-    background-image: url(../img/app/logfo.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 
 
 .lkhsdbka {
@@ -45,27 +33,7 @@ body {
     font-size: 30px;
     font-weight: bolder;
 }
-.btn {
-    
-background: #797979;
-    
-width: 100%;
-    
-height: 50px;
-    
-font-family: ned;
-    
-font-weight: 900;
-    
-font-size: 20px;
-    
-    
-outline: none;
-    
-border-color: transparent;
-    
-color: #fff;
-}
+
 
 .kfkdfk {
     padding-left: 13px;
@@ -180,6 +148,7 @@ input.btnfm {
     color: #fff;
     border-radius: 12px;
 }
+
 .bckda.lgnf {
     right: 17px;
 }
