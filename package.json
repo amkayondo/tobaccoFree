@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
     "start": "serve ./prod",
-    "test": "mocha-webpack --webpack-config webpack.config.test.js \"./src/**/*.test.js\"",
+    "test": "mocha-webpack --webpack-config webpack.config.test.js \"./src/**/*.test.jsx\"",
     "coverage": "nyc --reporter=lcov --reporter=text npm run test"
   },
   "keywords": [],

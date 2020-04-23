@@ -8,10 +8,10 @@ import { MyAuthContext } from '../../../context/AuthContext';
 
 export default function SignInPage() {
   const userData = {};
-  const {
-    authStatus, updateAuthStatus,
-    userAuthAction,
-  } = useContext(MyAuthContext);
+  // const {
+  //   authStatus, updateAuthStatus,
+  //   userAuthAction,
+  // } = useContext(MyAuthContext);
   const onSubmit = (event) => {
     event.preventDefault();
   };
