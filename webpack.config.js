@@ -3,8 +3,6 @@ const HtmlPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
-const PUBLIC_PATH = process.env.REACT_PUBLIC_PATH;
-
 module.exports = {
   entry: './App.jsx',
   output: {
@@ -12,6 +10,7 @@ module.exports = {
       __dirname, '/prod',
     ),
     filename: '[hash]-[name].js',
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -47,6 +46,12 @@ module.exports = {
   plugins: [
     new HtmlPlugin({
       template: './public/index.html',
+      hash: true,
+      chunks: ["main", "vendors"],
+      minify: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+      },
     }),
     new WebpackPwaManifest({
       name: "Free Tobacco",
@@ -63,7 +68,7 @@ module.exports = {
           destination: path.join("assets", "icons"),
         },
       ],
-      publicPath: PUBLIC_PATH,
+      publicPath: "/",
     }),
     new SWPrecacheWebpackPlugin(
       {
@@ -71,7 +76,7 @@ module.exports = {
         dontCacheBustUrlsMatching: /\.\w{8}\./,
         filename: "service-worker.js",
         minify: true,
-        navigateFallback: `${PUBLIC_PATH}index.html`,
+        navigateFallback: "/",
         staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
       },
     ),

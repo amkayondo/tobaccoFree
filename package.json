@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
-    "start": "serve ./prod",
+    "start": "serve",
     "test": "mocha-webpack --webpack-config webpack.config.test.js \"./src/**/*.test.jsx\"",
     "coverage": "nyc --reporter=lcov --reporter=text npm run test"
   },
@@ -29,7 +29,6 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "serve": "^11.3.0",
     "svg-inline-loader": "^0.8.2",
     "to-string-loader": "^1.1.6",
     "webpack": "^4.42.0",
