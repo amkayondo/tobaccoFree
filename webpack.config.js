@@ -1,63 +1,82 @@
-const path = require("path");
-const HtmlPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
+
+const PUBLIC_PATH = process.env.REACT_PUBLIC_PATH;
 
 module.exports = {
-    entry: "./App.js",
-    output: {
-        path: path.join(
-            __dirname, '/prod'
-        ),
-        filename: "app.bundle.js",
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$|jsx/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+  entry: './App.jsx',
+  output: {
+    path: path.join(
+      __dirname, '/prod',
+    ),
+    filename: '[hash]-[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$|jsx/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/i,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+      },
+      {
+        test: /\.(png|jp(e*)g|gif|webp|woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[hash]-[name].[ext]',
             },
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
-            },
-            {
-                test: /\.(png|jp(e*)g|svg|gif)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: 'images/[hash]-[name].[ext]',
-                      }
-                }]
-            },
-            {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [
-                  {
-                    loader: 'file-loader',
-                    options: {
-                      name: '[name].[ext]',
-                      outputPath: 'fonts/'
-                    }
-                  }
-                ]
-              }
+          },
         ],
-    },
-    resolve: {
-        extensions: ['*', '.js', '.jsx'],
-    },
-    plugins: [
-        new HtmlPlugin({
-            template: './public/index.html'
-        })
+      },
     ],
-    devServer: {
-        historyApiFallback: true,
-      }
-}
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new HtmlPlugin({
+      template: './public/index.html',
+    }),
+    new WebpackPwaManifest({
+      name: "Free Tobacco",
+      short_name: "Free Tobacco",
+      description: "Free Tobacco",
+      background_color: "#ffffff",
+      theme_color: "#ffffff",
+      "theme-color": "#ffffff",
+      crossorigin: "use-credentials",
+      icons: [
+        {
+          src: path.resolve("src/app/assets/img/app/logo.webp"),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join("assets", "icons"),
+        },
+      ],
+      publicPath: PUBLIC_PATH,
+    }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: "tobaccoFreeApp",
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: "service-worker.js",
+        minify: true,
+        navigateFallback: `${PUBLIC_PATH}index.html`,
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/],
+      },
+    ),
+  ],
+  devServer: {
+    historyApiFallback: true,
+  },
+};

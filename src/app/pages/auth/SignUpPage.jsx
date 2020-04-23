@@ -21,9 +21,9 @@ export default class SignUpPage extends Component {
             </div>
             <div className="lquths">
                 <form className="sgnfn_dib">
-                    <input type="tel"
+                    <input type="number"
                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                    placeholder="Phone Number" 
+                    placeholder="0781295406" 
                     name="" id="sgnfn_inpt" />
                     <input type="number" 
                     placeholder="New Pin"

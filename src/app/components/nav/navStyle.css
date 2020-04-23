@@ -1,0 +1,39 @@
+.btmkds {
+    /* background: aqua; */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 67px;
+}
+.ntabtn {
+    /* background: blueviolet; */
+    width: 74px;
+    text-align: center;
+    margin-left: auto;
+    float: left;
+}
+
+.ntabtn.rght {
+    width: 35%;
+}
+
+.ntabtn.md {
+    width: 30%;
+}
+
+.ntabtn.lft {
+    width: 35%;
+}
+
+.btneff:hover {
+    background: #6767673b;
+    cursor: pointer;
+}
+
+.ntabtn {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+a{
+    color: black;
+}

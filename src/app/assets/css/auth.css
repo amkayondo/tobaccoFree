@@ -23,7 +23,7 @@ body {
     border-radius: 50%;
     padding: 10px;
     margin: auto;
-    background-image: url(../img/app/logfo.jpg);
+    background-image: url(../img/app/logo.webp);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -133,7 +133,7 @@ button.btn.fs:active {
     background: white;
     width: 100%;
     height: 100vh;
-    margin-top: 52px;
+    margin-top: 118px;
 }
 
 .jdsf {
@@ -176,6 +176,7 @@ input.btnfm {
     font-family: ned;
     outline: none;
     font-size: 19px;
+    cursor: pointer;
     color: #fff;
     border-radius: 12px;
 }
