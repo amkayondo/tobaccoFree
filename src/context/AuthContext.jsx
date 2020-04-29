@@ -1,57 +1,49 @@
-import React, { createContext, useState, Component } from 'react';
+import React, { useState, createContext } from "react";
+import { useHistory } from "react-router-dom";
+import checkAuthError from "../app/utils/auth/checkAuthError";
 
-const REACT_APP_API = "http://192.168.43.84:5000/api/v1";
 
-export const MyAuthContext = createContext();
+export const MyAuthContext = createContext({});
 
-export default class AuthContext extends Component {
-  constructor() {
-    super();
-    this.state = {
+const AuthContext = ({ children }) => {
+  const [authStatus, seTauthStatus] = useState({
+    authStatus: {
+      token: null,
+      isLoggedIn: false,
+    },
+  });
+  const gotAnError = (errorValue) => {
+    seTauthStatus({
       authStatus: {
         token: null,
-        isLoggedIn: true,
+        isLoggedIn: false,
+        authError: errorValue,
       },
-    };
-    this.updateAuthStatus = (token) => {
-      this.setState({
-        authStatus: {
-          token,
-          isLoggedIn: true,
-        },
-      });
-      localStorage.setItem("tobaccoAuth", {
-        token: this.state.authStatus.token,
-        isLoggedIn: this.state.authStatus.isLoggedIn,
-      });
-    };
-    this.userAuthAction = (actionType, userInput) => {
-      const { phoneNumber, pin } = userInput;
-      fetch(`${REACT_APP_API}/auth/${actionType}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          phoneNumber,
-          pin,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    };
-  }
-
-  render() {
-    return (
-      <MyAuthContext.Provider value={{
-        authStatus: this.state.authStatus,
-        updateAuthStatus: this.updateAuthStatus,
-        userAuthAction: this.userAuthAction,
+    });
+  };
+  const updateAuthStatus = (tokenValue, isLoggedIn) => {
+    seTauthStatus({
+      authStatus: {
+        token: tokenValue,
+        isLoggedIn,
+      },
+    });
+    localStorage.setItem("tbAuthIsL", true);
+    localStorage.setItem("tbAuthtkn",
+      tokenValue);
+  };
+  return (
+    <MyAuthContext.Provider
+      value={{
+        authStatus,
+        updateAuthStatus,
+        gotAnError,
+        checkAuthError,
       }}
-      >
-        { this.props.children }
-      </MyAuthContext.Provider>
-    );
-  }
-}
+    >
+      { children }
+    </MyAuthContext.Provider>
+  );
+};
+
+export default AuthContext;
