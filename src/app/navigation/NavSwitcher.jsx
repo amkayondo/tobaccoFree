@@ -1,48 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import SplashScreen from '../pages/shared/SplashScreen';
+import React, { useContext } from 'react';
+import HomeNav from './HomeNav';
+import IndexNav from './IndexNav';
 import { MyAuthContext } from '../../context/AuthContext';
-import IndexPage from '../pages/IndexPage/IndexPage';
-import IndexAuthPage from '../pages/auth/IndexAuthPage';
-import SignInPage from '../pages/auth/SignInPage';
-import SignUpPage from '../pages/auth/SignUpPage';
-import switchIndex from '../utils/auth/switchIndex';
-import NotFoundPage from '../pages/shared/NotFoundPage';
-import StatusScreen from '../pages/shared/StatusScreen';
-import MoreScreen from '../pages/shared/MoreScreen';
 
-export default function NavSwitcher() {
-  const { authStatus } = useContext(MyAuthContext);
+
+// const token = null;
+
+const NavSwitcher = () => {
+  const context = useContext(MyAuthContext);
+  const { authStatus } = context;
+  const token = localStorage.getItem("tbAuthtkn");
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route
-          path="/"
-          component={switchIndex(authStatus, IndexPage, IndexAuthPage)}
-          exact
-        />
-        <Route
-          path="/login"
-          component={switchIndex(authStatus, NotFoundPage, SignInPage)}
-        />
-        <Route
-          path="/status"
-          component={StatusScreen}
-        />
-        <Route
-          path="/more"
-          component={MoreScreen}
-        />
-        <Route
-          path="/home"
-          component={IndexPage}
-        />
-        <Route
-          path="/signup"
-          component={switchIndex(authStatus, NotFoundPage, SignUpPage)}
-        />
-        <Route component={NotFoundPage} />
-      </Switch>
-    </BrowserRouter>
+    <div>
+      { localStorage.setItem("tbAuthtkn", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDIxNDY5MjQiLCJpc0FkbWluIjpmYWxzZSwicGhvbmVOdW1iZXIiOjc4MTI5NTQwNiwiaWF0IjoxNTg4MTkyMjQyLCJleHAiOjE1ODg3OTcwNDJ9.NTqzntf-QEGNqbVbno58Sm46RzZynwIHug5FaWFql7M") }
+      { token === null ? <IndexNav /> : <HomeNav /> }
+    </div>
   );
-}
+};
+
+export default NavSwitcher;

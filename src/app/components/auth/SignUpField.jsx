@@ -1,37 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
 
-const REACT_APP_API = "http://192.168.43.84:5000/api/v1";
-
-
-const SignInField = ({
-  updateAuthStatus,
-  authStatus,
-  gotAnError,
-  checkAuthError,
+const SignUpField = ({
+  userAuthAction,
 }) => {
   const [phoneNumber, setphoneNumber] = useState();
   const [userPin, setuserPin] = useState();
-  const history = useHistory();
   const subMitData = (e) => {
     e.preventDefault();
-    fetch(`${REACT_APP_API}/auth/signin`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        phoneNumber: String(781295406),
-        pin: String(123456),
-        // phoneNumber: String(phoneNumber),
-        // pin: String(pin),
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => checkAuthError(
-        data, gotAnError(data.error),
-        updateAuthStatus(data.data.token),
-      ));
+    userAuthAction("signup", {
+      phoneNumber,
+      pin: userPin,
+    });
   };
   return (
     <div>
@@ -75,4 +54,4 @@ const SignInField = ({
   );
 };
 
-export default SignInField;
+export default SignUpField;

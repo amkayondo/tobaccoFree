@@ -1,8 +1,10 @@
-const switchIndex = (state, home, login) => {
-  if (state.isLoggedIn === true) {
-    return home;
+const switchIndex = (firstCompt, secCompt) => {
+  const token = localStorage.getItem("tbAuthtkn");
+  const isLogedIn = localStorage.getItem("tbAuthIsL");
+  if (token === null) {
+    return secCompt;
   }
-  return login;
+  return firstCompt;
 };
 
 export default switchIndex;

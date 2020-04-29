@@ -9,7 +9,7 @@ module.exports = {
     path: path.join(
       __dirname, '/prod',
     ),
-    filename: '[hash]-[name].js',
+    filename: 'jdsioenriosp3inoiad.chunck.js',
     publicPath: "/",
   },
   module: {
@@ -46,12 +46,6 @@ module.exports = {
   plugins: [
     new HtmlPlugin({
       template: './public/index.html',
-      hash: true,
-      chunks: ["main", "vendors"],
-      minify: {
-        collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
-      },
     }),
     new WebpackPwaManifest({
       name: "Free Tobacco",
