@@ -34,6 +34,105 @@
     padding-top: 7px;
     padding-bottom: 7px;
 }
-a{
-    color: black;
+
+.tpsdfaf {
+    /* background: aquamarine; */
+    width: 100%;
+    height: 44px;
+    margin-top: 22px;
+    padding-top: 7px;
+}
+.tptnpdsf {
+    font-size: 27px;
+    margin-left: 15px;
+    font-weight: bolder;
+}
+
+.btmkds.njdfnj{
+    background-color: #ffff;
+}
+.sdfsdfsaa {
+    background: white;
+    position: fixed;
+    height: 54px;
+    width: 100%;
+}
+
+.jsdu {
+    position: absolute;
+    top: 19px;
+    margin-left: 49px;
+    font-size: 21px;
+    font-weight: bolder;
+}
+
+.bsjdsdf {
+    position: absolute;
+    top: 15px;
+    margin-left: 6px;
+    padding: 5px;
+}
+
+.erwerwerws {
+    background: #ffff;
+    position: fixed;
+    bottom: 0;
+    height: 103px;
+    width: 100%;
+    padding-left: 7px;
+}
+
+
+.rptjsd {
+    width: 228px;
+    margin-left: 10px;
+    margin-top: 12px;
+    font-weight: bolder;
+}
+
+.msknsdf {
+    float: right;
+    margin-top: -21px;
+    margin-left: 97px;
+    position: absolute;
+}
+.nsadkasd {
+    width: 228px;
+    margin-left: 10px;
+    margin-top: 12px;
+    font-weight: bolder;
+}
+
+select.dsfmas {
+    float: right;
+    margin-top: -24px;
+    margin-left: 97px;
+    position: absolute;
+    width: 101px;
+    border-radius: 4px;
+    height: 25px;
+}
+
+.indsfl {
+    background: #1ed266;
+    position: absolute;
+    height: 52px;
+    right: 0;
+    bottom: 37px;
+    margin-right: 21px;
+    border-radius: 50px;
+    width: 52px;
+}
+
+.asfnek {
+    margin-left: 15px;
+    margin-top: 13px;
+}
+.comsptn {
+    /* background: aqua; */
+    width: 100%;
+    height: 33px;
+    position: absolute;
+    margin-top: -43px;
+    left: 0;
 }
