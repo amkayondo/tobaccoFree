@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function TopNav() {
+export default function TopNav({
+  pageName,
+}) {
   return (
-    <div>
-      TopNav
+    <div className="tpsdfaf">
+      <div className="tptnpdsf">
+        { pageName }
+      </div>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: ned;
+    src: url(../fonts/CenturyGothic.ttf);
+}
+button {
+    outline: none;
+}
+a{
+    color: black;
+}

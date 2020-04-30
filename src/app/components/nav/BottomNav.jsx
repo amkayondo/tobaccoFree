@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 export default function BottomNav() {
   return (
-    <div className="btmkds">
+    <div className="btmkds njdfnj">
       <Link to="/">
         <div className="ntabtn rght btneff">
           <div className="tbnticn"><HomeIcon /></div>
