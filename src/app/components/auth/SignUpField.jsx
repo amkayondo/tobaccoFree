@@ -16,7 +16,7 @@ const SignUpField = ({
     <div>
       <div className="kdfnlsl">
         <div className="jdsf">
-          Login to continue
+          Create a new account
         </div>
         <div className="lquths">
           <form

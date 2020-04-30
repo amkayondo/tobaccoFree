@@ -13,6 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://tobacco-free.herokuapp.com",
   "dependencies": {
     "acorn": "^6.4.1",
     "axios": "^0.19.2",
