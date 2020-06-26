@@ -1,14 +1,8 @@
 import React, { useContext } from 'react';
 import HomeNav from './HomeNav';
 import IndexNav from './IndexNav';
-import { MyAuthContext } from '../../context/AuthContext';
-
-
-// const token = null;
 
 const NavSwitcher = () => {
-  const context = useContext(MyAuthContext);
-  const { authStatus } = context;
   const token = localStorage.getItem("tbAuthtkn");
   return (
     <div>

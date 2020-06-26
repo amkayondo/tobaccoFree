@@ -1,39 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div id="app"></div>
     <noscript>
-        <form action="https://www.google.com/chrome/" method="GET" style="background-color: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999;">
-            <div style="font-size: 18px; 
-            font-family: Helvetica,sans-serif; 
-            line-height: 24px; margin: 10%; width: 80%;">
-              <p>We've detected that JavaScript 
-              is disabled in your browser. 
-              Would you like to switch to another browser?</p>
-              <p style="margin: 20px 0;">
-                <button type="submit" style="background-color: #010c06;
-                border-radius: 100px;border: none;box-shadow: none;color: rgb(218, 218, 218);cursor: pointer;font-size: 14px;font-weight: bold;line-height: 20px;padding: 6px 16px;width: 121px;">
-                  OK</button>
-              </p>
-            </div>
-          </form>
+      <form
+        action="https://www.google.com/chrome/"
+        method="GET"
+        style="
+          background-color: #fff;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 9999;
+        "
+      >
+        <div
+          style="
+            font-size: 18px;
+            font-family: Helvetica, sans-serif;
+            line-height: 24px;
+            margin: 10%;
+            width: 80%;
+          "
+        >
+          <p>
+            We've detected that JavaScript is disabled in your browser. Would
+            you like to switch to another browser?
+          </p>
+          <p style="margin: 20px 0;">
+            <button
+              type="submit"
+              style="
+                background-color: #010c06;
+                border-radius: 100px;
+                border: none;
+                box-shadow: none;
+                color: rgb(218, 218, 218);
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 20px;
+                padding: 6px 16px;
+                width: 121px;
+              "
+            >
+              OK
+            </button>
+          </p>
+        </div>
+      </form>
     </noscript>
     <script>
-        window.addEventListener('beforeinstallprompt', (event) => {
-        console.log('👍', 'beforeinstallprompt', event);
-        window.deferredPrompt = event;
-        });
-      (function () {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js', {scope: '/'})
-        .then(() => console.log('Service Worker registered successfully.'))
-        .catch(error => console.log('Service Worker registration failed:', error));
-        }
-        })();
+      mapboxgl.accessToken =
+        "pk.eyJ1Ijoia2F5b25kbyIsImEiOiJjazdnamllaTcwMGF0M25tbm8xYWZ3ZWRoIn0.2KHCrvWCY_enimfbjo844w";
+      var map = new mapboxgl.Map({
+        container: "reportmap",
+        style: "mapbox://styles/mapbox/streets-v11",
+      });
     </script>
-</body>
+
+    <script>
+      window.addEventListener("beforeinstallprompt", (event) => {
+        console.log("👍", "beforeinstallprompt", event);
+        window.deferredPrompt = event;
+      });
+      (function () {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker
+            .register("./service-worker.js", { scope: "/" })
+            .then(() => console.log("Service Worker registered successfully."))
+            .catch((error) =>
+              console.log("Service Worker registration failed:", error)
+            );
+        }
+      })();
+    </script>
+  </body>
 </html>

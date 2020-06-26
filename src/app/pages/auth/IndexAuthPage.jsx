@@ -9,7 +9,7 @@ export default function IndexAuthPage() {
         <div className="imgdhf" />
       </div>
       <div className="txtjd">
-        Tobacco Free
+        Hapana Tobacco
       </div>
       <div className="shdf">
         Show Reports

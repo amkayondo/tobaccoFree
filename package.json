@@ -15,6 +15,7 @@
   "license": "ISC",
   "homepage": "https://tobacco-free.herokuapp.com",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.9.0",
     "acorn": "^6.4.1",
     "axios": "^0.19.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -30,7 +31,9 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.5",
     "serve": "^11.3.0",
     "svg-inline-loader": "^0.8.2",
     "to-string-loader": "^1.1.6",

@@ -1,5 +1,4 @@
 import React, { useContext, Suspense, lazy } from 'react';
-import { MyAuthContext } from '../../../context/AuthContext';
 import BottomNav from '../../components/nav/BottomNav';
 import "./indexStyles.css";
 import reportData from '../../../data/reports';
@@ -10,7 +9,6 @@ const TopHomeDiv = lazy(() => import("../../components/home/TopHomeDiv"));
 const HomeReports = lazy(() => import('../../components/reports/HomeReports'));
 
 export default function IndexPage() {
-  const context = useContext(MyAuthContext);
   return (
     <div className="dasd">
       <Suspense fallback={<SplashScreen />}>

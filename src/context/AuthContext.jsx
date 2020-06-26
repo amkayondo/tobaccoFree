@@ -1,49 +1,93 @@
-import React, { useState, createContext } from "react";
-import { useHistory } from "react-router-dom";
-import checkAuthError from "../app/utils/auth/checkAuthError";
+import React, { useState, useEffect, useContext } from 'react';
+import createAuth0Client from '@auth0/auth0-spa-js';
+import { useDispatch } from 'react-redux';
+import { loginUser, loginErrors } from '../store/actions/AuthActions';
 
+const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState(
+  {}, document.title, window.location.pathname,
+);
 
-export const MyAuthContext = createContext({});
+export const Auth0Context = React.createContext();
+export const useAuth0 = () => useContext(Auth0Context);
 
-const AuthContext = ({ children }) => {
-  const [authStatus, seTauthStatus] = useState({
-    authStatus: {
-      token: null,
-      isLoggedIn: false,
-    },
-  });
-  const gotAnError = (errorValue) => {
-    seTauthStatus({
-      authStatus: {
-        token: null,
-        isLoggedIn: false,
-        authError: errorValue,
-      },
-    });
+const Auth0Provider = ({
+  children, onRedirectCallback = DEFAULT_REDIRECT_CALLBACK, ...initOptions
+}) => {
+  const dispatch = useDispatch();
+  const [isAuthenticated, setIsAuthenticated] = useState();
+  const [user, setUser] = useState();
+  const [auth0Client, setAuth0] = useState();
+  const [loading, setLoading] = useState(true);
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const initAuth0 = async () => {
+      const auth0FromHook = await createAuth0Client(initOptions);
+      setAuth0(auth0FromHook);
+
+      if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
+        const { appState } = await auth0FromHook.handleRedirectCallback();
+        onRedirectCallback(appState);
+      }
+
+      const isAuthenticated = await auth0FromHook.isAuthenticated();
+
+      setIsAuthenticated(isAuthenticated);
+
+      if (isAuthenticated) {
+        const user = await auth0FromHook.getUser();
+        await auth0FromHook.getTokenSilently();
+        setUser(user);
+      }
+
+      setLoading(false);
+    };
+    initAuth0();
+    // eslint-disable-next-line
+  }, []);
+
+  const loginWithPopup = async (params = {}) => {
+    setPopupOpen(true);
+    try {
+      await auth0Client.loginWithPopup(params);
+    } catch (error) {
+      dispatch(loginErrors(error));
+    } finally {
+      setPopupOpen(false);
+    }
+    const user = await auth0Client.getUser();
+    const token = await auth0Client.getTokenSilently();
+    localStorage.setItem('id_token', token);
+    dispatch(loginUser(user));
   };
-  const updateAuthStatus = (tokenValue, isLoggedIn) => {
-    seTauthStatus({
-      authStatus: {
-        token: tokenValue,
-        isLoggedIn,
-      },
-    });
-    localStorage.setItem("tbAuthIsL", true);
-    localStorage.setItem("tbAuthtkn",
-      tokenValue);
+
+  const handleRedirectCallback = async () => {
+    setLoading(true);
+    await auth0Client.handleRedirectCallback();
+    const user = await auth0Client.getUser();
+    const token = await auth0Client.getTokenSilently();
+    localStorage.setItem('id_token', token);
+    dispatch(loginUser(user));
   };
   return (
-    <MyAuthContext.Provider
+    <Auth0Context.Provider
       value={{
-        authStatus,
-        updateAuthStatus,
-        gotAnError,
-        checkAuthError,
+        isAuthenticated,
+        user,
+        loading,
+        popupOpen,
+        loginWithPopup,
+        handleRedirectCallback,
+        getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+        getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+        getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+        logout: (...p) => auth0Client.logout(...p),
       }}
     >
-      { children }
-    </MyAuthContext.Provider>
+      {children}
+    </Auth0Context.Provider>
   );
 };
 
-export default AuthContext;
+export default Auth0Provider;

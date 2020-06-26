@@ -4,7 +4,7 @@ import "./mapStyles.css";
 export default function Map() {
   return (
     <div className="mptnuiefni">
-      Map its self
+      {/* Map its self */}
     </div>
   );
 }

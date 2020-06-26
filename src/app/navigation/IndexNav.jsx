@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { MyAuthContext } from '../../context/AuthContext';
 import IndexAuthPage from '../pages/auth/IndexAuthPage';
 import SignInPage from '../pages/auth/SignInPage';
 import SignUpPage from '../pages/auth/SignUpPage';
 import NotFoundPage from '../pages/shared/NotFoundPage';
 
 export default function NavSwitcher() {
-  const { authStatus } = useContext(MyAuthContext);
   return (
     <BrowserRouter>
       <Switch>

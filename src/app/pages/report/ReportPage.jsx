@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import BottomNav from '../../components/nav/BottomNav';
 import "./reportStyles.css";
 import SplashScreen from '../shared/SplashScreen';
+import TrackMap from '../../utils/maps/TrackMap';
 
 const NavgNav = lazy(() => import('../../components/nav/NavgNav'));
 const BottvgNav = lazy(() => import('../../components/nav/BottvgNav'));
