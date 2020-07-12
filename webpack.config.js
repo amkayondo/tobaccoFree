@@ -7,7 +7,7 @@ module.exports = {
   entry: './App.jsx',
   output: {
     path: path.join(
-      __dirname, '/prod',
+      __dirname, '/build',
     ),
     filename: 'jdsioenriosp3inoiad.chunck.js',
     publicPath: "/",

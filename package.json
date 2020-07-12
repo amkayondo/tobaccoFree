@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
-    "start": "serve ./prod",
+    "start": "./build",
     "test": "mocha-webpack --webpack-config webpack.config.test.js \"./src/**/*.test.jsx\"",
     "coverage": "nyc --reporter=lcov --reporter=text npm run test"
   },

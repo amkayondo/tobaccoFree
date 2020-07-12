@@ -17,33 +17,33 @@ const mapStyle = "mapbox://styles/mapbox/streets-v9";
 const deviceHeight = window.innerHeight;
 
 export default function Map() {
-  const [getLocationData, updateLocationData] = useState([]);
-  const dispatch = useDispatch();
-  const MapData = useSelector((state) => state);
-  const [positons, error] = useCurrentPosition();
+  // const [getLocationData, updateLocationData] = useState([]);
+  // const dispatch = useDispatch();
+  // const MapData = useSelector((state) => state);
+  // const [positons, error] = useCurrentPosition();
   // console.log(positons)
   // useEffect(() => dispatch(UpdateMapLocation()));
-  useEffect(() => {
-    dispatch(UpdateMapLocation(getLocation));
-    return () => {
-      null;
-    };
-  }, [null]);
+  // useEffect(() => {
+  //   dispatch(UpdateMapLocation(getLocation));
+  //   return () => {
+  //     null;
+  //   };
+  // }, [null]);
   // onload(dispatch(UpdateMapLocation()));
   return (
     <div className="mptnuiefni" id="mptcmpt">
       <MapComponent
         style={mapStyle}
         containerStyle={{
-          height: deviceHeight,
+          height: deviceHeight * 300,
           width: '100vw',
         }}
       >
         {' '}
-        { console.log(JSON.parse(MapData)) }
-        { console.log(`get Location data ${getLocation}`) }
+        {/* { console.log(JSON.parse(MapData)) }
+        { console.log(`get Location data ${getLocation}`) } */}
         <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-          <Feature coordinates={getLocationData} />
+          <Feature coordinates={[0.3802, 32.5571]} />
         </Layer>
       </MapComponent>
     </div>
