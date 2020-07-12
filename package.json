@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
-    "start": "./build",
+    "start": "serve ./build",
     "test": "mocha-webpack --webpack-config webpack.config.test.js \"./src/**/*.test.jsx\"",
     "coverage": "nyc --reporter=lcov --reporter=text npm run test",
     "run-server": "babel-node ./server/app.js"
@@ -17,6 +17,8 @@
   "homepage": "https://tobacco-free.herokuapp.com",
   "dependencies": {
     "@babel/node": "^7.10.4",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "acorn": "^6.4.1",
     "axios": "^0.19.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
