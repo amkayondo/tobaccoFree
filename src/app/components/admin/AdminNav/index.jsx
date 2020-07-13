@@ -15,6 +15,9 @@ import Menu from '@material-ui/core/Menu';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "fixed",
+    width: "100%",
+    top: 0
   },
   menuButton: {
     marginRight: theme.spacing(2),

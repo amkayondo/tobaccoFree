@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,17 +14,40 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   PaperStyle: {
-    cursor: "pointer",
+    // cursor: "pointer",
+  },
+  title: {
+    fontSize: 14,
+    color: "#333",
+    fontWeight: "bold"
+  },
+  textInn: {
+    fontWeight: "bold",
+    color: "#333"
   }
 }));
 
-export default function ReportCard() {
+export default function ReportCard({
+  reportBgColor,
+  reportTitle,
+  reportNumber
+}) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.PaperStyle} elevation={1} />
-      <Paper className={classes.PaperStyle} elevation={1} />
+      <Card style={{
+      background: reportBgColor
+    }} className={classes.PaperStyle} >
+        <CardContent>
+        <Typography className={classes.title} color="primary" gutterBottom>
+        { reportTitle }
+        </Typography>
+        <Typography variant="h2" className={classes.textInn} color="#000" component="h2">
+        { reportNumber }
+        </Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }
