@@ -7,6 +7,7 @@ import NotFoundPage from '../pages/shared/NotFoundPage';
 import StatusScreen from '../pages/shared/StatusScreen';
 import MoreScreen from '../pages/shared/MoreScreen';
 import ReportPage from '../pages/report/ReportPage';
+import AdminPage from '../pages/AdminPage';
 
 export default function NavSwitcher() {
   const { authStatus } = useContext(MyAuthContext);
@@ -33,6 +34,10 @@ export default function NavSwitcher() {
         <Route
           path="/report"
           component={ReportPage}
+        />
+        <Route
+          path="/admin"
+          component={AdminPage}
         />
         <Route component={NotFoundPage} />
       </Switch>
