@@ -23,7 +23,7 @@
     "axios": "^0.19.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gestalt": "^1.23.2",
     "istanbul-instrumenter-loader": "^3.0.1",
     "mapbox-gl": "^1.8.1",
